@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 
 export const Header = () => {
   return (
-    <header className="container mx-auto mt-6 mb-10 px-20">
-      <nav className="flex items-center justify-between">
+    <header className="container mx-auto pt-6 px-20">
+      <nav className="flex items-center justify-between pb-10 border-b-2">
         <Link className="font-bold text-2xl" href="/">
           FarmApp
         </Link>
