@@ -1,6 +1,9 @@
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { FeaturesOptimize } from "@/components/features-optimize";
+import { PlanCard } from "@/components/plan-card";
+import { Footer } from "@/components/footer";
+
 export default function Home() {
   return (
     <main>
@@ -68,6 +71,41 @@ export default function Home() {
             </Button>
           </div>
         </div>
+      </div>
+
+      <div className="container mx-auto py-20 px-6 sm:px-10 lg:px-20">
+        <div className="flex flex-col items-center text-center">
+          <span className="text-[40px] font-bold">
+            Transforme a gestão da sua farmácia com o FarmApp
+          </span>
+          <span className="text-2xl text-customGray-900 font-semibold pt-4">
+            Encontre o melhor plano para suas necessidades.
+          </span>
+        </div>
+        <div className="flex flex-wrap gap-2 w-full items-center pt-11">
+          <PlanCard
+            recommended
+            planName="Plano Anual"
+            price="R$ 299,90"
+            installments="em 12x de R$ 24,99"
+            upfrontPrice="R$ 269,90"
+          />
+          <PlanCard
+            planName="Plano Trimestral"
+            price="R$ 99,90"
+            installments="em 3x de R$ 33,30"
+            upfrontPrice="R$ 89,90"
+          />
+          <PlanCard
+            planName="Plano Mensal"
+            price="R$ 39,90"
+            installments="em 1x de R$ 39,90"
+            upfrontPrice="R$ 39,90"
+          />
+        </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </main>
   );
