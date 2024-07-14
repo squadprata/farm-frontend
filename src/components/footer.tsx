@@ -11,8 +11,8 @@ export const Footer = () => {
             </Link>
           </div>
           <div className="text-xl font-semibold mt-4 sm:mt-0">
-            <span>Termos e Condições</span>
-            <span className="ml-20">Ajuda</span>
+            <span className="cursor-pointer">Termos e Condições</span>
+            <span className="cursor-pointer ml-20">Ajuda</span>
           </div>
         </div>
       </div>
