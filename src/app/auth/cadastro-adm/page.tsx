@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Login } from "./_components";
+import { Login } from "./components";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
 const LoginPage = () => {
@@ -9,7 +9,6 @@ const LoginPage = () => {
         <MdKeyboardArrowLeft />
         <span className="ml-3 font-bold text-xl">Voltar</span>
       </Button>
-      
       <div className="flex justify-center items-center h-screen">
         <Login />
       </div>

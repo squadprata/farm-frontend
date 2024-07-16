@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { LoginButton } from "./auth/login-button";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +32,9 @@ export const Header = () => {
           </ul>
         </div>
         <div className="flex items-center gap-6">
-          <Link href="/private">Login</Link>
+          <LoginButton>
+            <Button>Login</Button>
+          </LoginButton>
           <Button className="rounded-full py-4 px-6 bg-customGray-400 hover:bg-customGray-900">
             <Link href="/cadastro">Cadastre-se</Link>
           </Button>
