@@ -24,7 +24,7 @@ export const Login = () => {
       </CardContent>
       <CardFooter className="flex justify-center pt-8">
         <Button
-          className="text-xl bg-customGray hover:bg-customGray-900 w-full h-[68px] rounded font-bold"
+          className="text-xl bg-customGray hover:bg-customGray-900 w-full h-[68px] rounded font-bold bg-primary"
           type="submit"
         >
           Entrar
