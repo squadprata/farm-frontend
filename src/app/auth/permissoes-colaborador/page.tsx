@@ -1,12 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Login } from "./_components";
-import { MdKeyboardArrowLeft } from "react-icons/md";
 
 const LoginPage = () => {
   return (
     <div className="container mx-auto mt-6 mb-10 px-20">
       <Button className="outline outline-1 outline-offset-1 outline-gray-400 rounded-full pl-4">
-        <MdKeyboardArrowLeft />
         <span className=" text-lg ml-[15px]">sair</span>
       </Button>
       <div className=" flex justify-center h-[66px] mt-[50px] mb-[67px] gap-2">
