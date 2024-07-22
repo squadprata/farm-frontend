@@ -12,47 +12,40 @@ const config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+        lg: "3rem",
+        xl: "5rem",
       },
     },
     extend: {
       colors: {
-        customGray: {
-          100: "#F7F7F7",
-          200: "#DEDEDE",
-          300: "#CBCBCB",
-          400: "#C9C9C9",
-          500: "#C5C5C5",
-          600: "#DDDDDD",
-          700: "#8D8D8D",
-          800: "#888686",
-          900: "#5E5E5E",
-          DEFAULT: "#999999",
+        primary: {
+          100: "#586DFF",
+          200: "#3649CD",
+          300: "#3741BE",
+          400: "#1C2C9A",
+          500: "#0A1667",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
-        customBlack: {
-          100: "#363636",
-          200: "#5E5E5E",
-          300: "#949494",
-          400: "#888686",
-          500: "#8D8D8D",
-          600: "#C5C5C5",
-          700: "#CBCBCB",
-          800: "#DEDEDE",
-          900: "#F7F7F7",
-          DEFAULT: "#000000",
+        neutral: {
+          100: "#FBFBFB",
+          200: "#E1E1E1",
+          300: "#BABBB9",
+          400: "#626461",
+          500: "#252624",
         },
-        customWhite: "#FFFFFF",
+        success: "#2E8731",
+        warning: "#F4A804",
+        error: "#F24318",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
+
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Login } from "./_components";
-import { MdKeyboardArrowLeft } from "react-icons/md";
 
 const LoginPage = () => {
   return (
