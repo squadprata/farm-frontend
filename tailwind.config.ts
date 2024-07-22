@@ -27,7 +27,7 @@ const config = {
           300: "#3741BE",
           400: "#1C2C9A",
           500: "#0A1667",
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#3741BE",
           foreground: "hsl(var(--primary-foreground))",
         },
         neutral: {
@@ -36,6 +36,7 @@ const config = {
           300: "#BABBB9",
           400: "#626461",
           500: "#252624",
+          DEFAULT: "#252624",
         },
         success: "#2E8731",
         warning: "#F4A804",
