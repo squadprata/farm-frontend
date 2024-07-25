@@ -1,22 +1,18 @@
 import axios from "axios";
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
-  timeout: 10000,
   headers: {
     "Content-Type": "application/json",
-    // Adicione outros cabeçalhos aqui se necessário
   },
 });
 
-export const fetchFromAPI = async (endpoint) => {
+export const fetchFromAPI = async <T>(endpoint: string): Promise<T> => {
   try {
-    const response = await api.get(endpoint);
+    const response = await api.get<T>(endpoint);
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
-    throw error;
+    throw new Error(`Error fetching data: ${(error as Error).message}`);
   }
 };
-
-export default api;
