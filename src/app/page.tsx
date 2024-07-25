@@ -1,3 +1,5 @@
+"use client";
+import { useFetch } from "@/hooks/useFetch";
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { FeaturesOptimize } from "@/components/features-optimize";
@@ -5,10 +7,11 @@ import { PlanCard } from "@/components/plan-card";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
+  const { data } = useFetch("/api/buscartodososusuarios");
+
   return (
     <main>
       <Header />
-
       <div className="container mx-auto pt-20 px-6 sm:px-10 lg:px-20">
         <div className="flex flex-col lg:flex-row items-center lg:items-start">
           <div className="flex flex-col max-w-full lg:max-w-[900px] items-center lg:items-start text-center lg:text-start">
@@ -34,7 +37,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <div className="bg-customGray-400 mt-7">
         <div className="container mx-auto py-20 px-6 sm:px-10 lg:px-20">
           <div className="flex flex-col text-center">
@@ -72,7 +74,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <div className="container mx-auto py-20 px-6 sm:px-10 lg:px-20">
         <div className="flex flex-col items-center text-center">
           <span className="text-[40px] font-bold">
