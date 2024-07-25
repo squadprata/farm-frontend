@@ -1,4 +1,5 @@
 "use client";
+
 import { useFetch } from "@/hooks/useFetch";
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
@@ -7,11 +8,14 @@ import { PlanCard } from "@/components/plan-card";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
-  const { data } = useFetch("/api/buscartodososusuarios");
+  const { data, loading } = useFetch<any>("/buscartodososusuarios");
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <main>
       <Header />
+      <div>Data: {JSON.stringify(data)}</div>
       <div className="container mx-auto pt-20 px-6 sm:px-10 lg:px-20">
         <div className="flex flex-col lg:flex-row items-center lg:items-start">
           <div className="flex flex-col max-w-full lg:max-w-[900px] items-center lg:items-start text-center lg:text-start">
