@@ -8,14 +8,13 @@ import { PlanCard } from "@/components/plan-card";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
-  const { data, loading } = useFetch<any>("/buscartodososusuarios");
-
+  const { data, loading } = useFetch<any>("/login");
+  console.log(data);
   if (loading) return <div>Loading...</div>;
 
   return (
     <main>
       <Header />
-      <div>Data: {JSON.stringify(data)}</div>
       <div className="container mx-auto pt-20 px-6 sm:px-10 lg:px-20">
         <div className="flex flex-col lg:flex-row items-center lg:items-start">
           <div className="flex flex-col max-w-full lg:max-w-[900px] items-center lg:items-start text-center lg:text-start">
