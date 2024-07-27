@@ -12,7 +12,7 @@ export const LoginButton = ({ children, mode, asChild }: LoginButtonProps) => {
   const router = useRouter();
 
   const onClick = () => {
-    router.push("/auth/login-adm");
+    router.push("/login-adm");
   };
 
   return (

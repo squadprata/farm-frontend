@@ -1,4 +1,5 @@
 "use client";
+
 import { useFetch } from "@/hooks/useFetch";
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,9 @@ import { PlanCard } from "@/components/plan-card";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
-  const { data } = useFetch("/api/buscartodososusuarios");
+  const { data, loading } = useFetch<any>("/login");
+  console.log(data);
+  if (loading) return <div>Loading...</div>;
 
   return (
     <main>

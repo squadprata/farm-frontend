@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -32,10 +31,10 @@ export const Header = () => {
           </ul>
         </div>
         <div className="flex items-center gap-6">
-          <LoginButton>
-            <Button>Login</Button>
-          </LoginButton>
-          <Button className="rounded-full py-4 px-6 bg-customGray-400 hover:bg-customGray-900">
+          <Link className="text-sm" href="/login-adm">
+            Login
+          </Link>
+          <Button className="text-white" asChild>
             <Link href="/cadastro">Cadastre-se</Link>
           </Button>
           <button
