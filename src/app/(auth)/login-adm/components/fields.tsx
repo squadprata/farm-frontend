@@ -24,7 +24,9 @@ export const LoginFields = () => {
     },
   });
 
-  const onSubmit = () => {};
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
 
   return (
     <Form {...form}>
