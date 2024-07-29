@@ -1,7 +1,7 @@
 import * as z from "zod";
 
 export const loginSchema = z.object({
-  username: z
+  email: z
     .string()
     .min(1, { message: "E-mail é obrigatório" })
     .email({ message: "E-mail inválido" }),
