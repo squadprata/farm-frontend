@@ -18,7 +18,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           return response.data;
         } catch (error) {
           throw new Error(
-            `User not found. ${JSON.stringify(error?.response?.data)}`
+            `User not found. ${JSON.stringify((error as any).response.data)}`
           );
         }
       },
