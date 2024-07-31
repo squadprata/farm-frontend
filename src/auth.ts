@@ -2,22 +2,24 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { authRequest } from "./services/auth";
 
-export const {
-  handlers: { POST, GET },
-  signIn,
-  signOut,
-  auth,
-} = NextAuth({
+export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
-      authorize: async ({ email, password }: any) => {
+      credentials: {
+        email: {},
+        password: {},
+      },
+      authorize: async (credentials: any) => {
+        console.log("credentials", credentials);
         try {
-          const response = await authRequest.login({ email, password });
+          const response = await authRequest.login(credentials);
           if (!response.data) return null;
 
           return response.data;
         } catch (error) {
-          throw new Error("User not found.");
+          throw new Error(
+            `User not found. ${JSON.stringify(error?.response?.data)}`
+          );
         }
       },
     }),

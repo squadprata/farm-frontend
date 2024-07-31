@@ -30,8 +30,7 @@ export const LoginFields = () => {
   const onSubmit = async (data: any) => {
     const { email, password } = data;
     try {
-      await signIn("credentials", { redirect: false }, { email, password });
-      // router.push("/dashboard");
+      await signIn("credentials", { email, password });
     } catch (error) {
       console.log(error);
     }
