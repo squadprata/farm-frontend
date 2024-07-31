@@ -14,6 +14,8 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchema } from "./schemaValidation";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export const LoginFields = () => {
   const form = useForm<LoginSchema>({
@@ -23,9 +25,15 @@ export const LoginFields = () => {
       password: "",
     },
   });
+  const router = useRouter();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    const { email, password } = data;
+    try {
+      await signIn("credentials", { email, password });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
