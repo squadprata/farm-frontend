@@ -12,8 +12,8 @@ export default function AuthLayout({
   const router = useRouter();
 
   return (
-    <div className="container min-h-screen flex flex-col items-center pt-[85px]">
-      <div className="w-full max-w-screen-sm me-auto">
+    <div className="container min-h-screen flex flex-col items-center">
+      <div className="w-full max-w-screen-sm me-auto pt-[85px]">
         <Button
           className="rounded-full py-4"
           variant="outline"
