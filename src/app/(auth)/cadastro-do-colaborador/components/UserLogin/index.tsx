@@ -38,7 +38,7 @@ export const UserLogin: React.FC<UserLoginProps> = ({ onNext }) => {
   };
 
   return (
-    <Card className="w-full">
+    <Card className="w-full max-w-md">
       <CardHeader>
         <CardTitle className="text-center font-bold text-[32px] text-neutral leading-10">
           Crie um login
@@ -56,7 +56,7 @@ export const UserLogin: React.FC<UserLoginProps> = ({ onNext }) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-primary font-semibold">
-                    Username
+                    Usuário
                   </FormLabel>
                   <FormControl>
                     <Input placeholder="Crie um usuário" {...field} />
