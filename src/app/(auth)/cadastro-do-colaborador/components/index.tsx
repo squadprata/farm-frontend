@@ -4,6 +4,7 @@ import { Progress } from "@/components/ui/progress";
 import { useState } from "react";
 import { UserLogin } from "./UserLogin";
 import { UserData } from "./UserData";
+import { UserPermissions } from "./UserPermissions";
 
 export const EmployeeRegistration = () => {
   const [step, setStep] = useState(1);
@@ -35,6 +36,9 @@ export const EmployeeRegistration = () => {
         {step === 1 && <UserLogin onNext={handleNext} />}
         {step === 2 && (
           <UserData onNext={handleNext} onPrevious={handlePrevious} />
+        )}
+        {step === 3 && (
+          <UserPermissions onNext={handleNext} onPrevious={handlePrevious} />
         )}
       </div>
     </div>
