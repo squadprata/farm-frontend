@@ -2,7 +2,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { LoginButton } from "./auth/login-button";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -77,7 +77,7 @@ export const LoginFields = () => {
             </FormItem>
           )}
         />
-        <Link className="text-primary-100 text-sm" href="/esqueci-a-senha">
+        <Link className="text-primary-100 text-sm" href="/recuperar-senha">
           Esqueci minha senha
         </Link>
         <Button type="submit" className="w-full text-white">
