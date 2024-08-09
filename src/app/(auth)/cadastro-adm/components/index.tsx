@@ -12,7 +12,7 @@ import {
 
 export const Login = () => {
   return (
-    <Card className="w-[832px]">
+    <Card className="w-10/12 lg:w-9/12">
       <CardHeader className="reducep-6">
         <CardTitle className="text-center font-bold text-[32px] text-neutral leading-10 mb-0.5">
           Cadastre-se

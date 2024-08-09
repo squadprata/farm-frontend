@@ -39,48 +39,54 @@ export const LoginFields = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <div className="flex gap-x-4">
-          <FormField
-            control={form.control}
-            name="fullname"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-primary font-semibold">
-                  Nome Completo
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className=" border-neutral-300 rounded-6 text-base leading-5"
-                    placeholder="Digite seu nome completo"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-primary font-semibold">
-                  Email
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className="border-neutral-300 rounded-6 text-base leading-5 w-[384px] h-[42px]"
-                    placeholder="Digite seu e-mail"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <div className="flex gap-x-4 flex-col lg:flex-row">
+          <div className="w-full lg:w-6/12">
+            <FormField
+              control={form.control}
+              name="fullname"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-primary font-semibold">
+                    Nome Completo
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className="rounded-6 text-base leading-5 border-neutral-300 "
+                      placeholder="Digite seu nome completo"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div className="w-full lg:w-6/12">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-primary font-semibold">
+                    Email
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className="border-neutral-300 rounded-6 text-base leading-5 h-[42px]"
+                      placeholder="Digite seu e-mail"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
-        <div className="flex w-full gap-x-4">
-          <div className="w-full">
+
+        <div className="flex w-full gap-x-4 flex-col lg:flex-row">
+          <div className="w-full lg:w-6/12">
             <FormField
               control={form.control}
               name="cargo"
@@ -108,7 +114,7 @@ export const LoginFields = () => {
               )}
             />
           </div>
-          <div>
+          <div className="w-full lg:w-6/12">
             <FormField
               control={form.control}
               name="cpf"
@@ -119,7 +125,7 @@ export const LoginFields = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className=" border-neutral-300 rounded-6 text-base leading-5 w-[384px] h-[42px]"
+                      className=" border-neutral-300 rounded-6 text-base leading-5 h-[42px]"
                       placeholder="Digite seu CPF"
                       {...field}
                     />
@@ -130,45 +136,52 @@ export const LoginFields = () => {
             />
           </div>
         </div>
-        <div className="flex gap-x-4">
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-primary font-semibold">
-                  Senha
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className=" border-neutral-300 rounded-6 text-base leading-5 w-[384px] h-[42px]"
-                    placeholder="Digite sua senha"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="confirmPassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-primary font-semibold">
-                  Confirme sua senha
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className=" border-neutral-300 rounded-6 text-base leading-5 w-[384px] h-[42px]"
-                    placeholder="Digite sua senha"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+
+        <div className="flex gap-x-4 flex-col lg:flex-row">
+          <div className="w-full lg:w-6/12">
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-primary font-semibold">
+                    Senha
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className=" border-neutral-300 rounded-6 text-base leading-5 h-[42px]"
+                      placeholder="Digite sua senha"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+
+          <div className="w-full lg:w-6/12">
+            <FormField
+              control={form.control}
+              name="confirmPassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-primary font-semibold">
+                    Confirme sua senha
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className=" border-neutral-300 rounded-6 text-base leading-5 h-[42px]"
+                      placeholder="Digite sua senha"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
 
         <Button

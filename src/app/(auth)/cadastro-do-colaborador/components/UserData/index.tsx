@@ -54,8 +54,8 @@ export const UserData: React.FC<UserDataProps> = ({ onNext, onPrevious }) => {
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="flex  gap-4">
-              <div className="w-full">
+            <div className="flex gap-4 flex-col lg:flex-row">
+              <div className="w-full lg:w-6/12">
                 <FormField
                   control={form.control}
                   name="collaborator_name"
@@ -72,7 +72,7 @@ export const UserData: React.FC<UserDataProps> = ({ onNext, onPrevious }) => {
                   )}
                 />
               </div>
-              <div className="w-full">
+              <div className="w-full lg:w-6/12">
                 <FormField
                   control={form.control}
                   name="email"
@@ -90,8 +90,9 @@ export const UserData: React.FC<UserDataProps> = ({ onNext, onPrevious }) => {
                 />
               </div>
             </div>
-            <div className="flex gap-4">
-              <div className="w-full">
+
+            <div className="flex gap-4 flex-col lg:flex-row">
+              <div className="w-full lg:w-6/12">
                 <FormField
                   control={form.control}
                   name="role"
@@ -108,7 +109,7 @@ export const UserData: React.FC<UserDataProps> = ({ onNext, onPrevious }) => {
                   )}
                 />
               </div>
-              <div className="w-full">
+              <div className="w-full lg:w-6/12">
                 <FormField
                   control={form.control}
                   name="cpf"
@@ -126,6 +127,7 @@ export const UserData: React.FC<UserDataProps> = ({ onNext, onPrevious }) => {
                 />
               </div>
             </div>
+
             <FormField
               control={form.control}
               name="crf"

@@ -33,125 +33,143 @@ export const LoginFields = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <div className="flex gap-x-4">
-          <FormField
-            control={form.control}
-            name="nameFarm"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-primary font-semibold">
-                  Nome da farmácia*
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className=" border-neutral-300 rounded-6 text-base leading-5 w-[384px] h-[42px]"
-                    placeholder="Digite o nome da farmácia"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="cnp"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-primary font-semibold">
-                  CNPJ*
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className=" border-neutral-300 rounded-6 text-base leading-5 w-[384px] h-[42px]"
-                    placeholder="Digite o CNPJ da farmácia"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <div className="flex gap-x-4 flex-col lg:flex-row">
+          <div className="w-full lg:w-6/12">
+            <FormField
+              control={form.control}
+              name="nameFarm"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-primary font-semibold">
+                    Nome da farmácia*
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className=" border-neutral-300 rounded-6 text-base leading-5 h-[42px]"
+                      placeholder="Digite o nome da farmácia"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div className="w-full lg:w-6/12">
+            <FormField
+              control={form.control}
+              name="cnp"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-primary font-semibold">
+                    CNPJ*
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className=" border-neutral-300 rounded-6 text-base leading-5 h-[42px]"
+                      placeholder="Digite o CNPJ da farmácia"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
-        <div className="flex gap-x-4">
-          <FormField
-            control={form.control}
-            name="ender"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-primary font-semibold">
-                  Endereço*
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className=" border-neutral-300 rounded-6 text-base leading-5 w-[384px] h-[42px]"
-                    placeholder="Digite o endereço da farmácia"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="numero"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-primary font-semibold">
-                  Número
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className=" border-neutral-300 rounded-6 text-base leading-5 w-[384px] h-[42px]"
-                    placeholder="Digite o número da farmácia"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+
+        <div className="flex gap-x-4 flex-col lg:flex-row">
+          <div className="w-full lg:w-6/12">
+            <FormField
+              control={form.control}
+              name="ender"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-primary font-semibold">
+                    Endereço*
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className=" border-neutral-300 rounded-6 text-base leading-5 h-[42px]"
+                      placeholder="Digite o endereço da farmácia"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div className="w-full lg:w-6/12">
+            <FormField
+              control={form.control}
+              name="numero"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-primary font-semibold">
+                    Número
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className=" border-neutral-300 rounded-6 text-base leading-5 h-[42px]"
+                      placeholder="Digite o número da farmácia"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
-        <div className="flex gap-x-4">
-          <FormField
-            control={form.control}
-            name="cep"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-primary font-semibold">
-                  CEP
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className=" border-neutral-300 rounded-6 text-base leading-5 w-[384px] h-[42px]"
-                    placeholder="Digite o CEP da farmácia"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="city"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-primary font-semibold">
-                  Cidade
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className=" border-neutral-300 rounded-6 text-base leading-5 w-[384px] h-[42px]"
-                    placeholder="Digite a cidade da farmácia"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+
+        <div className="flex gap-x-4 flex-col lg:flex-row">
+          <div className="w-full lg:w-6/12">
+            <FormField
+              control={form.control}
+              name="cep"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-primary font-semibold">
+                    CEP
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className=" border-neutral-300 rounded-6 text-base leading-5 h-[42px]"
+                      placeholder="Digite o CEP da farmácia"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div className="w-full lg:w-6/12">
+            <FormField
+              control={form.control}
+              name="city"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-primary font-semibold">
+                    Cidade
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className=" border-neutral-300 rounded-6 text-base leading-5 h-[42px]"
+                      placeholder="Digite a cidade da farmácia"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
         </div>
 
         <Button
