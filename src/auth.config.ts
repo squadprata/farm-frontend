@@ -24,6 +24,22 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.email = user.email;
+        token.id = user.id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.email = token.email ?? "";
+      }
+      return session;
+    },
+  },
+
   pages: {
     signIn: "/login-adm",
     error: "/login-adm",

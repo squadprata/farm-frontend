@@ -15,9 +15,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchema } from "./schemaValidation";
 import { signIn } from "next-auth/react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export const LoginFields = () => {
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -25,13 +28,24 @@ export const LoginFields = () => {
       password: "",
     },
   });
-  const router = useRouter();
 
   const onSubmit = async (data: any) => {
     const { email, password } = data;
+    setError(null);
     try {
-      await signIn("credentials", { email, password });
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        setError("Senha ou e-mail incorretos. Por favor, tente novamente.");
+      } else if (result?.ok) {
+        router.push("/admin");
+      }
     } catch (error) {
+      setError("Ocorreu um erro. Por favor, tente novamente.");
       console.log(error);
     }
   };
@@ -73,6 +87,11 @@ export const LoginFields = () => {
                   {...field}
                 />
               </FormControl>
+              {error && (
+                <div className="text-red-500 text-sm font-medium pt-2">
+                  {error}
+                </div>
+              )}
               <FormMessage />
             </FormItem>
           )}
