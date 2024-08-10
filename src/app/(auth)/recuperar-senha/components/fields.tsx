@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import {
   Form,
   FormControl,
@@ -14,18 +13,34 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchema } from "./schemaValidation";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export const LoginFields = () => {
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
-      password: "",
     },
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: LoginSchema) => {
+    try {
+      const res = await axios.post("/recuperar-senha", data);
+      if (res.status === 200) {
+        Swal.fire({
+          title: "E-mail enviado com sucesso!",
+          text: "Por favor, verifique sua caixa de e-mail.",
+          icon: "success",
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        title: "Oops...",
+        text: "Erro ao solicitar a redefinição de senha.",
+        icon: "error",
+      });
+    }
   };
 
   return (
@@ -41,7 +56,7 @@ export const LoginFields = () => {
               </FormLabel>
               <FormControl>
                 <Input
-                  className=" border-neutral-300 rounded-6 text-base leading-5 w-[464px] h-[42px]"
+                  className=" border-neutral-300 rounded-6 text-base leading-5"
                   placeholder="Digite seu e-mail"
                   {...field}
                 />
@@ -51,11 +66,8 @@ export const LoginFields = () => {
           )}
         />
 
-        <Button
-          type="submit"
-          className="w-[464px] h-[42px] text-xl text-white leading-7 reducemt"
-        >
-          Continuar
+        <Button type="submit" className="text-xl text-white leading-7 w-full">
+          Enviar
         </Button>
       </form>
     </Form>

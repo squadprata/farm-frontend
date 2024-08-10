@@ -16,7 +16,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchema } from "./schemaValidation";
 import SelectArea from "../../Select/page";
 
-
 export const LoginFields = () => {
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
