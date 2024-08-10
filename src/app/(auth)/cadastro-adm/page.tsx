@@ -2,8 +2,8 @@
 
 import { Login } from "./components";
 
-const LoginPage = () => {
+const ResisterAdmPage = () => {
   return <Login />;
 };
 
-export default LoginPage;
+export default ResisterAdmPage;

@@ -12,15 +12,17 @@ import {
 
 export const Login = () => {
   return (
-    <Card className="w-[832px]">
-      <CardHeader className="reducep-6">
-        <CardTitle className="text-center font-bold text-[32px] text-neutral leading-10 mb-0.5">
-          Cadastre sua farmácia
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <LoginFields />
-      </CardContent>
-    </Card>
+    <div className="flex justify-center items-center p-4">
+      <Card className="lg:w-[832px] md:w-[750px]">
+        <CardHeader>
+          <CardTitle className="text-center font-bold text-[32px] text-neutral leading-10 mb-0.5">
+            Cadastre sua farmácia
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <LoginFields />
+        </CardContent>
+      </Card>
+    </div>
   );
 };
