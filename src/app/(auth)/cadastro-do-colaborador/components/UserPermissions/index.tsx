@@ -22,6 +22,7 @@ import {
   userPermissionsSchema,
   type UserPermissionsSchema,
 } from "./schemaValidation";
+import { useState } from "react";
 
 interface UserPermissionsProps {
   onNext: (data: any) => void;
@@ -32,10 +33,12 @@ export const UserPermissions: React.FC<UserPermissionsProps> = ({
   onNext,
   onPrevious,
 }) => {
+  const [selectedPermissionType, setSelectedPermissionType] = useState<"USER"| "ADMIN">("USER")
+  
   const form = useForm<UserPermissionsSchema>({
     resolver: zodResolver(userPermissionsSchema),
     defaultValues: {
-      username: "",
+      permissionType: "USER",
     },
   });
 
@@ -58,7 +61,7 @@ export const UserPermissions: React.FC<UserPermissionsProps> = ({
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <FormField
               control={form.control}
-              name="username"
+              name="permissionType"
               render={({ field }) => (
                 <div className="flex border rounded p-6 w-full">
                   <div className="flex h-full">
@@ -73,7 +76,9 @@ export const UserPermissions: React.FC<UserPermissionsProps> = ({
                             <FormControl>
                               <RadioGroupItem
                                 className="text-black"
-                                value="mentions"
+                                value="USER"
+                                defaultChecked
+                                onClick={() => setSelectedPermissionType("USER")}
                               />
                             </FormControl>
                             <FormLabel>Usuário</FormLabel>
@@ -82,7 +87,8 @@ export const UserPermissions: React.FC<UserPermissionsProps> = ({
                             <FormControl>
                               <RadioGroupItem
                                 className="text-black"
-                                value="none"
+                                value="ADMIN"
+                                onClick={() => setSelectedPermissionType("ADMIN")}
                               />
                             </FormControl>
                             <FormLabel>Administrador</FormLabel>
@@ -92,8 +98,29 @@ export const UserPermissions: React.FC<UserPermissionsProps> = ({
                       <FormMessage />
                     </FormItem>
                   </div>
-                  <div className="w-full text-center">
-                    <span className="text-xl text-neutral">Permissões</span>
+                  <div className="w-full flex justify-center">
+                    <article className="w-fit text-left flex flex-col items-start justify-start">
+                      <h1 className="text-xl text-neutral">Permissões</h1>
+                      {
+                        selectedPermissionType === "USER" &&
+                        <ul className="flex flex-col list-none text-neutral-400 font-regular text-sm">
+                          <li>Cadastrar produtos</li>
+                          <li>Configurações de produtos</li>
+                          <li>Colocar avisos</li>
+                        </ul>
+                      }
+                      {
+                        selectedPermissionType === "ADMIN" &&
+                        <ul className="flex flex-col list-none text-neutral-400 font-regular text-sm">
+                            <li>Visualizar histórico detalhado</li>
+                            <li>Colocar avisos</li>
+                            <li>Criação de lista de compras</li>
+                            <li>Cadastrar produtos</li>
+                            <li>Gerar relatórios</li>
+                            <li>Adicionar colaboradores</li>
+                          </ul>
+                      }
+                    </article>
                   </div>
                 </div>
               )}

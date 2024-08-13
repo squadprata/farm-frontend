@@ -65,7 +65,7 @@ export const UserData: React.FC<UserDataProps> = ({ onNext, onPrevious }) => {
                         Nome do colaborador
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Digite seu nome" {...field} />
+                        <Input placeholder="Digite o nome do colaborador" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -82,7 +82,7 @@ export const UserData: React.FC<UserDataProps> = ({ onNext, onPrevious }) => {
                         E-mail
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Digite seu email" {...field} />
+                        <Input placeholder="Digite o E-mail do Colaborador" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -102,7 +102,7 @@ export const UserData: React.FC<UserDataProps> = ({ onNext, onPrevious }) => {
                         Cargo
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Digite seu nome" {...field} />
+                        <Input placeholder="Digite o cargo do colaborador" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
