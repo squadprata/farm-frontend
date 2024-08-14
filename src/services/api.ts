@@ -11,7 +11,7 @@ const getToken = async () => {
 };
 
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:3001",
+  baseURL: "https://farm-api-s4jq.onrender.com" ?? "http://localhost:3001",
 });
 
 api.interceptors.request.use(
