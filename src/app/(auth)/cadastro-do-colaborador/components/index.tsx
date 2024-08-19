@@ -6,7 +6,6 @@ import { UserLogin } from "./UserLogin";
 import { UserData } from "./UserData";
 import { UserPermissions } from "./UserPermissions";
 import { Final } from "./final";
-import { api } from "@/services/api";
 import { usePost } from "@/hooks/usePost";
 import Swal from "sweetalert2";
 
@@ -25,7 +24,6 @@ export const EmployeeRegistration = () => {
 
   const handleSubmit = async(data: any) => {
     const finalData = { ...formData, ...data };
-    console.log(finalData)
     try { 
       const response = await usePost({
           endpoint:'/cadastro',
@@ -46,7 +44,6 @@ export const EmployeeRegistration = () => {
       if (response.status === 201) setStep(step + 1)
         
     } catch (error:any) {
-      console.log('error: ', error)  
       Swal.fire({
         icon: "error",
         title: error?.response?.data?.error || "Erro",
