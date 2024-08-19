@@ -20,6 +20,7 @@ import { useRouter } from "next/navigation";
 
 export const LoginFields = () => {
   const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const router = useRouter();
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
@@ -32,13 +33,13 @@ export const LoginFields = () => {
   const onSubmit = async (data: any) => {
     const { email, password } = data;
     setError(null);
+    setIsSubmitting(true);
     try {
       const result = await signIn("credentials", {
         email,
         password,
-        redirect: false,
       });
-
+      console.log(result);
       if (result?.error) {
         setError("Senha ou e-mail incorretos. Por favor, tente novamente.");
       } else if (result?.ok) {
@@ -47,6 +48,8 @@ export const LoginFields = () => {
     } catch (error) {
       setError("Ocorreu um erro. Por favor, tente novamente.");
       console.log(error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -99,8 +102,12 @@ export const LoginFields = () => {
         <Link className="text-primary-100 text-sm" href="/recuperar-senha">
           Esqueci minha senha
         </Link>
-        <Button type="submit" className="w-full text-white">
-          Entrar
+        <Button
+          type="submit"
+          className="w-full text-white"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Entrando..." : "Entrar"}
         </Button>
       </form>
     </Form>

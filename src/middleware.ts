@@ -5,6 +5,9 @@ export const middleware = (request: NextRequest) => {
   const token = request.cookies.get("authjs.session-token");
   const pathname = request.nextUrl.pathname;
 
+  console.log("Token:", token);
+  console.log("Pathname:", pathname);
+
   if (pathname.includes("/login-adm") && token) {
     return NextResponse.redirect(new URL(getUrl("/admin")));
   }
