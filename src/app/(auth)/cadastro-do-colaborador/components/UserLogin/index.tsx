@@ -23,13 +23,14 @@ import { userLoginSchema, type UserLoginSchema } from "./schemaValidation";
 
 interface UserLoginProps {
   onNext: (data: any) => void;
+  formData: any;
 }
 
-export const UserLogin: React.FC<UserLoginProps> = ({ onNext }) => {
+export const UserLogin: React.FC<UserLoginProps> = ({ onNext, formData }) => {
   const form = useForm<UserLoginSchema>({
     resolver: zodResolver(userLoginSchema),
     defaultValues: {
-      username: "",
+      username: formData?.username || "",
     },
   });
 

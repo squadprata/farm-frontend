@@ -1,21 +1,15 @@
-import { useState, useEffect } from "react";
-import { api, fetchFromAPI } from "@/services/api";
+import { api } from "@/services/api";
 
-type FetchDataResult<T> = {
-    data: T | null;
-    loading: boolean;
-    error: Error | null;
-};
-
-export const usePost = async ({endpoint, body}:{endpoint: string, body: any[]}) => {
+export const usePost = async ({endpoint, body, headers}:{endpoint: string, body: any, headers: any}) => {
     
     async function post(){
         try {            
-            const result = await api.post(endpoint, body)
+            // const result = await api.post(endpoint, body)
+            const result = await api.post(endpoint, body, {headers})
             return await result.data
         } catch (err) {
-            console.error("Error in useFetchData:", err)
-            return err
+            console.error("Error in usePost:", err)
+            throw err;
         }
     };
 

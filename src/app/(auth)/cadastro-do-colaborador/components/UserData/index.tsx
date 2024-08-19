@@ -23,17 +23,18 @@ import { userDataSchema, type UserDataSchema } from "./schemaValidation";
 interface UserDataProps {
   onNext: (data: any) => void;
   onPrevious: (data: any) => void;
+  formData: any;
 }
 
-export const UserData: React.FC<UserDataProps> = ({ onNext, onPrevious }) => {
+export const UserData: React.FC<UserDataProps> = ({ onNext, onPrevious , formData}) => {
   const form = useForm<UserDataSchema>({
     resolver: zodResolver(userDataSchema),
     defaultValues: {
-      collaborator_name: "",
-      email: "",
-      role: "",
-      cpf: "",
-      crf: "",
+      collaborator_name: formData?.collaborator_name || "",
+      email: formData?.email ||"",
+      role: formData?.role || "",
+      cpf: formData?.cpf || "",
+      crf: formData?.crf || "",
     },
   });
 
