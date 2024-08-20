@@ -1,6 +1,6 @@
 import { api } from "@/services/api";
 
-export const useDelete = async ({
+export const deleteData = async ({
   endpoint,
   headers,
 }: {

@@ -15,6 +15,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchema } from "./schemaValidation";
 import SelectArea from "../../Select/page";
+import { postData } from "@/hooks/usePost"; // Renomeado para evitar confusão
 
 export const LoginFields = () => {
   const form = useForm<LoginSchema>({
@@ -25,8 +26,20 @@ export const LoginFields = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: LoginSchema) => {
+    try {
+      const response = await postData({
+        endpoint: "/admins",
+        body: data,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log("Cadastro realizado com sucesso:", response);
+    } catch (error) {
+      console.error("Erro ao cadastrar administrador:", error);
+    }
   };
 
   return (

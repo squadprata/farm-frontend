@@ -1,6 +1,6 @@
 import { api } from "@/services/api";
 
-export const usePatch = async ({
+export const patchData = async ({
   endpoint,
   body,
   headers,

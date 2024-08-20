@@ -1,6 +1,6 @@
 import { api } from "@/services/api";
 
-export const usePut = async ({
+export const putData = async ({
   endpoint,
   body,
   headers,

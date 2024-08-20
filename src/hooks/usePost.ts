@@ -1,6 +1,8 @@
 import { api } from "@/services/api";
-
-export const usePost = async ({
+//o usePost é uma função async e não deve ser chamado diretamente  
+//dentro de funções de evento como onSubmit.
+//por isso mudei o nome para postData
+export const postData = async ({
   endpoint,
   body,
   headers,
@@ -15,7 +17,7 @@ export const usePost = async ({
       const result = await api.post(endpoint, body, { headers });
       return await result.data;
     } catch (err) {
-      console.error("Error in usePost:", err);
+      console.error("Error in postData:", err);
       throw err;
     }
   }
