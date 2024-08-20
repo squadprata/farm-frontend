@@ -11,6 +11,9 @@ export const postData = async ({
   body: any;
   headers: any;
 }) => {
+  console.log("Request body:", body);
+  console.log("Request headers:", headers);
+
   async function post() {
     try {
       // const result = await api.post(endpoint, body)

@@ -2,6 +2,9 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { authRequest } from "./services/auth";
 
+// Adiciona o segredo para NextAuth
+const secret = process.env.NEXTAUTH_SECRET;
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
@@ -47,4 +50,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     verifyRequest: "/login-adm",
     newUser: "/admin",
   },
+
+  secret, // Adiciona o segredo à configuração
 });

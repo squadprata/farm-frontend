@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Form,
   FormControl,
@@ -8,13 +6,21 @@ import {
   FormField,
   FormItem,
 } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  SelectGroup,
+} from "@/components/ui/select";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchema } from "./schemaValidation";
-import SelectArea from "../../Select/page";
+
 import { postData } from "@/hooks/usePost"; // Renomeado para evitar confusão
 
 export const LoginFields = () => {
@@ -23,6 +29,10 @@ export const LoginFields = () => {
     defaultValues: {
       email: "",
       password: "",
+      fullname: "",
+      cargo: "",
+      cpf: "",
+      confirmPassword: "",
     },
   });
 
@@ -99,7 +109,13 @@ export const LoginFields = () => {
                   <FormLabel className="text-primary font-semibold">
                     Cargo
                   </FormLabel>
-                  <SelectArea />
+                  <FormControl>
+                    <Input
+                      className="w-full border-neutral-300 rounded-6 text-base leading-5"
+                      placeholder="Digite seu cargo"
+                      {...field}
+                    />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
