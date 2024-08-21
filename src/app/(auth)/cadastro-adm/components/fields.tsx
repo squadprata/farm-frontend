@@ -6,21 +6,12 @@ import {
   FormField,
   FormItem,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  SelectGroup,
-} from "@/components/ui/select";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchema } from "./schemaValidation";
-
 import { postData } from "@/hooks/usePost"; // Renomeado para evitar confusão
 
 export const LoginFields = () => {
@@ -33,19 +24,30 @@ export const LoginFields = () => {
       cargo: "",
       cpf: "",
       confirmPassword: "",
+      fileUpload: undefined,
     },
   });
 
   const onSubmit = async (data: LoginSchema) => {
     try {
+      const formData = new FormData();
+      Object.keys(data).forEach((key) => {
+        formData.append(key, data[key as keyof LoginSchema] as any);
+      });
+  
+      // Logando o conteúdo do FormData
+      for (const [key, value] of formData.entries()) {
+        console.log(`${key}:`, value);
+      }
+  
       const response = await postData({
         endpoint: "/admins",
-        body: data,
+        body: formData,
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
       });
-
+  
       console.log("Cadastro realizado com sucesso:", response);
     } catch (error) {
       console.error("Erro ao cadastrar administrador:", error);
@@ -54,7 +56,11 @@ export const LoginFields = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-4"
+        encType="multipart/form-data"
+      >
         <div className="flex flex-wrap items-center">
           <div className="w-full sm:w-1/2 px-2 pb-4">
             <FormField
@@ -182,6 +188,32 @@ export const LoginFields = () => {
                       placeholder="Digite sua senha"
                       type="password"
                       {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div className="w-full sm:w-1/2 px-2 mb-4">
+            <FormField
+              control={form.control}
+              name="fileUpload"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-primary font-semibold">
+                    Upload de Arquivo
+                  </FormLabel>
+                  <FormControl>
+                    <input
+                      type="file"
+                      className="w-full border-neutral-300 rounded-6 text-base leading-5"
+                      onChange={(e) => {
+                        if (e.target.files && e.target.files.length > 0) {
+                          field.onChange(e.target.files[0]);
+                        }
+                      }}
                     />
                   </FormControl>
                   <FormMessage />

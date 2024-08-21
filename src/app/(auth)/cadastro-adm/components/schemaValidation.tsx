@@ -16,6 +16,16 @@ export const loginSchema = z.object({
   cpf: z
     .string({ message: "Este campo é obrigatório" })
     .min(11, { message: "Insira um CPF válido" }),
+  fileUpload: z
+    .any()
+    .refine((file) => file instanceof File, "O arquivo deve ser uma imagem.")
+    .refine(
+      (file) =>
+        file.type === "image/jpeg" ||
+        file.type === "image/png" ||
+        file.type === "image/jpg",
+      "A imagem deve ser do tipo JPEG, PNG."
+    ),
 });
 
 export type LoginSchema = z.infer<typeof loginSchema>;
