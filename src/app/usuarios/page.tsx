@@ -24,17 +24,21 @@ const ColaboradorPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/buscartodosusuarios")
+      .get("https://farm-api-staging.onrender.com/users", {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
       .then((response) => {
         setUsers(response.data)
         setLoading(false)
       })
       .catch((err) => {
-        console.error("ops! ocorreu um erro" + err)
+        console.error("Erro ao fazer requisição:", err.response ? err.response.data : err.message)
         setLoading(false);
       })
   }, [])
-
+  
 	const filteredUsers = users.filter(({ name, cargo, ativo }) =>
     (showActive ? ativo : !ativo) &&
     (name.toLowerCase().includes(searchTerm.toLowerCase()) || 
