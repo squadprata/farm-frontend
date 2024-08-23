@@ -18,7 +18,7 @@ api.interceptors.request.use(
   async (config) => {
     if (
       config.url &&
-      (config.url.includes("/login") || config.url.includes("/cadastro")) &&
+      (config.url.includes("/login") || config.url.includes("/register")) &&
       config.method === "post"
     ) {
       return config;
@@ -42,9 +42,9 @@ api.interceptors.response.use(
     if (error.response) {
       const status = error.response.status;
       if (status === 401) {
-        alert("Ocorreu um erro, realize o login novamente!");
+        console.error("Ocorreu um erro, realize o login novamente!");
       } else if (status === 500) {
-        alert("Ocorreu um erro interno, tente fazer a ação novamente.");
+        console.error("Ocorreu um erro interno, tente fazer a ação novamente.");
       }
     }
     return Promise.reject(error);
