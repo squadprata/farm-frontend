@@ -25,7 +25,6 @@ export const EmployeeRegistration = () => {
   const handleSubmit = async (data: any) => {
     const finalData = { ...formData, ...data };
     try {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       const response = await usePost({
         endpoint: "/cadastro",
         body: {
