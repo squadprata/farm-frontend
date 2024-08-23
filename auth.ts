@@ -27,7 +27,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             throw new Error("Resposta inesperada da API.");
           }
 
-          return response.data;
+          return {
+            email: response.data.email,
+            id: response.data.id,
+            token: response.data.token,
+          };
         } catch (error) {
           console.error("Erro na autenticação:", error);
           throw new Error("Falha na autenticação. Verifique suas credenciais.");
@@ -39,6 +43,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: "/login-adm",
   },
   callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+        token.token = user.token;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.id = token.id as string;
+      session.user.token = token.token as string | undefined;
+      return session;
+    },
     async signIn({ user, account, profile }) {
       return true;
     },
