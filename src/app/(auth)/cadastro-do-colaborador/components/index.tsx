@@ -6,7 +6,7 @@ import { UserLogin } from "./UserLogin";
 import { UserData } from "./UserData";
 import { UserPermissions } from "./UserPermissions";
 import { Final } from "./final";
-import { usePost } from "@/hooks/usePost";
+import { postData } from "@/hooks/usePost";
 import Swal from "sweetalert2";
 
 export const EmployeeRegistration = () => {
@@ -25,7 +25,7 @@ export const EmployeeRegistration = () => {
   const handleSubmit = async (data: any) => {
     const finalData = { ...formData, ...data };
     try {
-      const response = await usePost({
+      const response = await postData({
         endpoint: "/cadastro",
         body: {
           name: finalData.username,
