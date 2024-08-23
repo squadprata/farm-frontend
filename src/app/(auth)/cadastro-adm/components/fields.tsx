@@ -11,8 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, type LoginSchema } from "./schemaValidation";
-import { postData } from "@/hooks/usePost"; // Renomeado para evitar confusão
+import { registerSchema, type RegisterSchema } from "./schemaValidation";
+import { postData } from "@/hooks/usePost";
 import {
   Select,
   SelectTrigger,
@@ -21,9 +21,9 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 
-export const LoginFields = () => {
-  const form = useForm<LoginSchema>({
-    resolver: zodResolver(loginSchema),
+export const RegisterAdmData = () => {
+  const form = useForm<RegisterSchema>({
+    resolver: zodResolver(registerSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -35,17 +35,12 @@ export const LoginFields = () => {
     },
   });
 
-  const onSubmit = async (data: LoginSchema) => {
+  const onSubmit = async (data: RegisterSchema) => {
     try {
       const formData = new FormData();
       Object.keys(data).forEach((key) => {
-        formData.append(key, data[key as keyof LoginSchema] as any);
+        formData.append(key, data[key as keyof RegisterSchema] as any);
       });
-
-      // Logando o conteúdo do FormData
-      for (const [key, value] of formData.entries()) {
-        console.log(`${key}:`, value);
-      }
 
       const response = await postData({
         endpoint: "/admins",
@@ -56,8 +51,10 @@ export const LoginFields = () => {
       });
 
       console.log("Cadastro realizado com sucesso:", response);
+      alert("Cadastro realizado com sucesso!");
     } catch (error) {
       console.error("Erro ao cadastrar administrador:", error);
+      alert("Erro ao cadastrar administrador. Tente novamente.");
     }
   };
 

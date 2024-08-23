@@ -1,9 +1,9 @@
 "use client";
 
-import { Login } from "./components";
+import { RegisterAdmCard } from "./components";
 
 const ResisterAdmPage = () => {
-  return <Login />;
+  return <RegisterAdmCard />;
 };
 
 export default ResisterAdmPage;

@@ -1,7 +1,7 @@
 "use client";
 
 import { CenterFocusIcon } from "hugeicons-react";
-import { LoginFields } from "./fields";
+import { RegisterAdmData } from "./fields";
 import {
   Card,
   CardContent,
@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export const Login = () => {
+export const RegisterAdmCard = () => {
   return (
     <div className="flex justify-center items-center p-4">
       <Card className="w-full max-w-[832px] lg:w-[832px] md:w-[750px]">
@@ -20,7 +20,7 @@ export const Login = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <LoginFields />
+          <RegisterAdmData />
         </CardContent>
       </Card>
     </div>
