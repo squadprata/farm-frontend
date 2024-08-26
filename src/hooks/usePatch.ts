@@ -1,4 +1,5 @@
 import { api } from "@/services/api";
+import axios from "axios";
 
 export const patchData = async ({
   endpoint,
@@ -10,13 +11,19 @@ export const patchData = async ({
   headers?: any;
 }) => {
   async function patch() {
+    
+    const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL
     try {
-      // Faz a requisição PATCH usando a instância `api`, passando o corpo e os cabeçalhos opcionais
-      const result = await api.patch(endpoint, body, { headers });
-      return await result.data;
-    } catch (err) {
-      console.error("Error in usePatch:", err);
-      throw err;
+      const result = await axios.patch(
+        `${baseURL}${endpoint}`, body, { 
+          headers: { headers }
+        }
+      ).then(resp => resp.data)
+
+      return (result)
+    } catch (error) {
+      console.log("Error in patchData: ", error)
+      throw error
     }
   }
 

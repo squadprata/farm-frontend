@@ -1,4 +1,5 @@
 import { api } from "@/services/api";
+import axios from "axios";
 
 export const deleteData = async ({
   endpoint,
@@ -8,12 +9,17 @@ export const deleteData = async ({
   headers?: any;
 }) => {
   async function del() {
+
+    const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL
     try {
-      const result = await api.delete(endpoint, { headers });
-      return await result.data;
-    } catch (err) {
-      console.error("Error in useDelete:", err);
-      throw err;
+      const result = await axios.delete(
+        `${baseURL}${endpoint}`, { headers: { headers } }
+      ).then(resp => resp.data)
+
+      return (result)
+    } catch (error) {
+      console.error("Error in deleteData:", error);
+      throw error
     }
   }
 

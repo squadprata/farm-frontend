@@ -13,10 +13,12 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchema } from "./schemaValidation";
-import axios from "axios";
 import Swal from "sweetalert2";
+import { postData } from "@/hooks/usePost";
+import { useState } from "react";
 
 export const LoginFields = () => {
+  const [isButtonDisable , setIsButtonDisable] = useState(false)
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -25,8 +27,17 @@ export const LoginFields = () => {
   });
 
   const onSubmit = async (data: LoginSchema) => {
+    setIsButtonDisable(true)   
     try {
-      const res = await axios.post("/recuperar-senha", data);
+      const res = await postData({
+        endpoint:"/password-reset",
+        body: data,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      console.log(res)
+
       if (res.status === 200) {
         Swal.fire({
           title: "E-mail enviado com sucesso!",
@@ -40,6 +51,8 @@ export const LoginFields = () => {
         text: "Erro ao solicitar a redefinição de senha.",
         icon: "error",
       });
+    } finally{
+      setIsButtonDisable(false)
     }
   };
 
@@ -66,7 +79,7 @@ export const LoginFields = () => {
           )}
         />
 
-        <Button type="submit" className="text-xl text-white leading-7 w-full">
+        <Button type="submit" disabled={isButtonDisable} className="text-xl text-white leading-7 w-full">
           Enviar
         </Button>
       </form>
