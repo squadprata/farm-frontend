@@ -25,7 +25,6 @@ api.interceptors.request.use(
     }
 
     const token = await getToken();
-    console.log(token);
 
     if (token) {
       config.headers["Authorization"] = `Bearer ${token.body.csrfToken}`;
