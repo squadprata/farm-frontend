@@ -33,7 +33,7 @@ export const LoginFields = () => {
 
   const onSubmit = async(data: any) => {
     setIsButtonDisable(true)
-    const endPoint = `/password-update/${session?.user?.email}`  
+    const endPoint = `password-update/${session?.user?.email}`  
     
     try{
       const result = await postData({
