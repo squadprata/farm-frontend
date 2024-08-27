@@ -30,7 +30,7 @@ export const LoginFields = () => {
     setIsButtonDisable(true)   
     try {
       const res = await postData({
-        endpoint:"/password-reset",
+        endpoint:"password-reset",
         body: data,
         headers: {
           "Content-Type": "application/json"
