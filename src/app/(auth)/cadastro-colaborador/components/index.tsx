@@ -26,7 +26,7 @@ export const EmployeeRegistration = () => {
     const finalData = { ...formData, ...data };
     try {
       const response = await postData({
-        endpoint: "cadastro",
+        endpoint: "/cadastro",
         body: {
           name: finalData.username,
           cpf: finalData.cpf,

@@ -34,7 +34,7 @@ export const Header = () => {
             Login
           </Link>
           <Button className="text-white" asChild>
-            <Link href="/cadastro">Cadastre-se</Link>
+            <Link href="/cadastro-adm">Cadastre-se</Link>
           </Button>
           <button
             onClick={toggleMenu}

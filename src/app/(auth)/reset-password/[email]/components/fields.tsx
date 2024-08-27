@@ -33,7 +33,7 @@ export const NewPasswordsFields = ({ email }: { email: string }) => {
 
     const onSubmit = async (data: any) => {
         setIsButtonDisable(true)
-        const endPoint = `password-update/${email}`
+        const endPoint = `/password-update/${email}`
 
         try {
             const result = await postData({
