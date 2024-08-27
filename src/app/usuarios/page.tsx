@@ -10,6 +10,7 @@ import { SearchIcon } from 'lucide-react';
 import axios from 'axios';
 
 interface User {
+  id: number,
 	name: string,
 	cargo: string,
   ativo: boolean
@@ -56,19 +57,21 @@ const ColaboradorPage = () => {
 				<CardContent>
 					<Form {...form}>
 						<div className="flex justify-between items-center">
-							<FormControl>
+							<div className="w-9/12">
+              <FormControl>
 								<div className="relative">
 									<span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 										<SearchIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
 									</span>
 									<Input
 										className="rounded-6 text-base leading-5 border-neutral-300 pl-10"
-										placeholder="Pesquisar por nome ou CPF"
+										placeholder="Pesquisar por nome ou cargo"
 										value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
 									/>
 								</div>
 							</FormControl>
+              </div>
 							<div>
 								<Switch checked={showActive}
                   onCheckedChange={setShowActive} 
@@ -82,12 +85,14 @@ const ColaboradorPage = () => {
           {loading ? (
               <p>Carregando...</p>
             ) : filteredUsers.length > 0 ? (
-              filteredUsers.map(({ name, cargo, ativo }) => (
-                <div key={name} className="flex justify-between py-5">
+              filteredUsers.map(({ id, name, cargo, ativo }) => (
+                <div key={id} className="flex justify-between py-5">
                   <div className="flex gap-3">
                     <div className="w-14 h-14 bg-gray-400 rounded-full"></div>
                     <div>
-                      <h4 className="font-semibold">{name}</h4>
+                      <h4 className="font-semibold">
+                        <a href={`/usuario/${id}`}>{name}</a>
+                      </h4>
                       <p>{cargo}</p>
                     </div>
                   </div>

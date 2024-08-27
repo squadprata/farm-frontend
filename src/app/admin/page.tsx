@@ -13,6 +13,18 @@ const AdminPage = () => {
         <Link className="w-full" href="/nova-senha">
           <Button>Nova Senha</Button>
         </Link>
+
+        <Link className="w-full ml-2" href="/usuarios">
+          <Button>
+            Colaboradores
+          </Button>
+        </Link>
+
+        <Link className="w-full ml-2" href="/cadastro-adm">
+          <Button>
+            Cadastro admin
+          </Button>
+        </Link>
       </>
     ) 
   }
