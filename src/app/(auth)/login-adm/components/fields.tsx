@@ -99,7 +99,7 @@ export const LoginFields = () => {
             </FormItem>
           )}
         />
-        <Link className="text-primary-100 text-sm" href="/recuperar-senha">
+        <Link className="text-primary-100 text-sm" href="/nova-senha">
           Esqueci minha senha
         </Link>
         <Button
