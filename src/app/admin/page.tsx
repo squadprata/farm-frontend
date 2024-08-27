@@ -25,6 +25,12 @@ const AdminPage = () => {
             Cadastro admin
           </Button>
         </Link>
+
+        <Link className="w-full ml-2" href="/cadastro-colaborador">
+          <Button>
+            Cadastro do colaborador
+          </Button>
+        </Link>
       </>
     ) 
   }
