@@ -58,6 +58,7 @@ const FormProfile = ({ params }: { params: { id: string } }) => {
       cargo: user?.cargo,
       cpf: user?.cpf,
       crf: user?.crf,
+      ativo: status
     },
   })
 
