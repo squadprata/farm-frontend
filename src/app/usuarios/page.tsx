@@ -25,7 +25,7 @@ const ColaboradorPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://farm-api-staging.onrender.com/users", {
+      .get("https://farm-api-g2zo.onrender.com/users", {
         headers: {
           'Content-Type': 'application/json'
         }

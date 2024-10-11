@@ -11,7 +11,7 @@ const getToken = async () => {
 };
 
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL ?? "https://farm-api-staging.onrender.com",
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL ?? "https://farm-api-g2zo.onrender.com/",
 });
 
 api.interceptors.request.use(
