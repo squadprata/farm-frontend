@@ -33,7 +33,7 @@ const FormProfile = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     setLoading(true)
     axios
-      .get(`https://farm-api-staging.onrender.com/user/${id}`, {
+      .get(`https://farm-api-g2zo.onrender.com/user/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -66,7 +66,7 @@ const FormProfile = ({ params }: { params: { id: string } }) => {
   const onSubmit = async (data: User) => {
     try {
       const response = await axios.put(
-        `https://farm-api-staging.onrender.com/user/${id}`,
+        `https://farm-api-g2zo.onrender.com/user/${id}`,
         {
           name: data.name,
           crf: data.crf,

@@ -22,10 +22,11 @@ const ColaboradorPage = () => {
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState("")
   const [showActive, setShowActive] = useState(true)
+  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL
 
   useEffect(() => {
     axios
-      .get("https://farm-api-g2zo.onrender.com/users", {
+      .get(`/users`, {
         headers: {
           'Content-Type': 'application/json'
         }
