@@ -8,6 +8,9 @@ import { useForm } from 'react-hook-form';
 import { Switch } from '@/components/ui/switch';
 import { SearchIcon } from 'lucide-react';
 import axios from 'axios';
+import { Button } from "@/components/ui/button";
+import { ArrowLeft01Icon } from "hugeicons-react";
+import Link from 'next/link';
 
 interface User {
   id: number,
@@ -26,7 +29,7 @@ const ColaboradorPage = () => {
 
   useEffect(() => {
     axios
-      .get(`/users`, {
+      .get(`${baseURL}users`, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -49,6 +52,13 @@ const ColaboradorPage = () => {
 
   return (
     <div className="flex justify-center mt-20">
+      <Link href="/admin">
+        <Button className="absolute left-12 top-20 rounded-full py-4" variant="outline">
+          <ArrowLeft01Icon size={16} />
+          Voltar
+        </Button>
+      </Link>
+
       <Card className=" w-11/12 lg:w-5/12">
         <CardHeader className="reducep-6">
           <CardTitle className="text-center font-bold text-[32px] text-neutral leading-10 mb-0.5">

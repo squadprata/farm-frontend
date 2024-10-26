@@ -121,12 +121,7 @@ export const RegisterAdmData = () => {
                   </FormLabel>
                   <FormControl>
                     <Select
-                      //onValueChange é um evento acionado quando clica no campo select.
-                      //field.onChange(value), atualiza o valor do campo cargo gerenciado pelo hook-form.
-                      //garante também que o valor seja armazenado corretamente no formulário.
                       onValueChange={(value) => field.onChange(value)}
-                      //garante que o valor selecionado seja mostrado no select.
-                      //acessa e mostra o valor atual do compo.
                       value={field.value}
                     >
                       <SelectTrigger className="w-full border-neutral-300 rounded-6 text-base leading-5">

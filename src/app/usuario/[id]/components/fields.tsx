@@ -29,11 +29,12 @@ const FormProfile = ({ params }: { params: { id: string } }) => {
   const { id } = params;
   const { data: session } = useSession()
   const token = session?.user?.token
+  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL
 
   useEffect(() => {
     setLoading(true)
     axios
-      .get(`https://farm-api-g2zo.onrender.com/user/${id}`, {
+      .get(`${baseURL}user/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`

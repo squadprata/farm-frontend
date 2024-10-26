@@ -34,7 +34,6 @@ export const LoginFields = () => {
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="flex flex-wrap items-center">
           <div className="w-full sm:w-1/2 px-2 pb-4">
-            =======
             <FormField
               control={form.control}
               name="nameFarm"
@@ -91,72 +90,6 @@ export const LoginFields = () => {
                     <Input
                       className="border-neutral-300 rounded-6 text-base leading-5"
                       placeholder="Digite o endereço da farmácia"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-
-          <div className="w-full sm:w-1/2 px-2 mb-4">
-            <FormField
-              control={form.control}
-              name="numero"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-primary font-semibold">
-                    Número
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      className="border-neutral-300 rounded-6 text-base leading-5"
-                      placeholder="Digite o número da farmácia"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-
-          <div className="w-full sm:w-1/2 px-2 mb-4">
-            <FormField
-              control={form.control}
-              name="cep"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-primary font-semibold">
-                    CEP
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      className="border-neutral-300 rounded-6 text-base leading-5"
-                      placeholder="Digite o CEP da farmácia"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-
-          <div className="w-full sm:w-1/2 px-2 mb-4">
-            <FormField
-              control={form.control}
-              name="city"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-primary font-semibold">
-                    Cidade
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      className="border-neutral-300 rounded-6 text-base leading-5"
-                      placeholder="Digite a cidade da farmácia"
                       {...field}
                     />
                   </FormControl>
