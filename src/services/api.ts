@@ -9,7 +9,7 @@ const getToken = async () => {
     return null;
   }
 };
-
+// Teste Update
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL ?? "https://farm-api-g2zo.onrender.com/",
 });
