@@ -39,7 +39,7 @@ export const LoginFields = () => {
         email,
         password,
       });
-      console.log(result);
+      
       if (result?.error) {
         setError("Senha ou e-mail incorretos. Por favor, tente novamente.");
       } else if (result?.ok) {

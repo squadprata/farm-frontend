@@ -7,8 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import axios from 'axios';
 import { useSession } from 'next-auth/react'
-import { api, fetchFromAPI } from '@/services/api'
-import { useFetch } from '@/hooks/useFetch'
 
 interface User {
   name: string,
@@ -113,6 +111,10 @@ const FormProfile = ({ params }: { params: { id: string } }) => {
 
   if (!user) {
     return <p>Usuário não encontrado</p>
+  }
+
+  if (!session) {
+    return <p>Você não está autorizado a visualizar!</p>;
   }
 
   return (
