@@ -43,7 +43,7 @@ export const RegisterAdmData = () => {
       });
 
       const response = await postData({
-        endpoint: "/admins",
+        endpoint: "/admin-register",
         body: formData,
         headers: {
           "Content-Type": "multipart/form-data",
