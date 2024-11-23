@@ -8,8 +8,10 @@ import { UserPermissions } from "./UserPermissions";
 import { Final } from "./final";
 import { postData } from "@/hooks/usePost";
 import Swal from "sweetalert2";
+import { useSession } from "next-auth/react";
 
 export const EmployeeRegistration = () => {
+  const { data: session } = useSession()
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState<any>({});
 
@@ -23,7 +25,8 @@ export const EmployeeRegistration = () => {
   };
 
   const handleSubmit = async (data: any) => {
-    const finalData = { ...formData, ...data };
+    const finalData = { ...formData, ...data }
+    
     try {
       const response = await postData({
         endpoint: "/cadastro",
@@ -55,6 +58,11 @@ export const EmployeeRegistration = () => {
     setFormData({});
     setStep(1);
   };
+
+
+  if (!session) {
+    return "Você não está autorizado a visualizar"
+  }
 
   return (
     <div className="flex flex-col w-full items-center">
