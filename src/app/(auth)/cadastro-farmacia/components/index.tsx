@@ -9,8 +9,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useSession } from "next-auth/react";
 
-export const Login = () => {
+export const CadastroFarmacia = () => {
+  const {data: session} = useSession()
+
+  if (!session) {
+    return "Você não está autorizado a adcionar uma nova farmácia"
+  }
+
   return (
     <div className="flex justify-center items-center p-4">
       <Card className="lg:w-[832px] md:w-[750px]">

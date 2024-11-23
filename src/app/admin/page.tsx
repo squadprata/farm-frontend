@@ -9,7 +9,7 @@ const AdminPage = () => {
   if (session) {
     return(
       <>
-        <p>Welcome, {session.user?.email}!</p>
+        <p>Seja bem vindo, {session.user?.email}!</p>
         <Link className="w-full" href="/nova-senha">
           <Button>Nova Senha</Button>
         </Link>
@@ -29,6 +29,12 @@ const AdminPage = () => {
         <Link className="w-full ml-2" href="/cadastro-colaborador">
           <Button>
             Cadastro do colaborador
+          </Button>
+        </Link>
+
+        <Link className="w-full ml-2" href="/">
+          <Button>
+            Terminar sessão
           </Button>
         </Link>
       </>

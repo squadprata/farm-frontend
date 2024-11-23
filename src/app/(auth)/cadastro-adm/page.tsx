@@ -1,9 +1,14 @@
 "use client";
 
+import { SessionProvider } from "next-auth/react";
 import { RegisterAdmCard } from "./components";
 
 const ResisterAdmPage = () => {
-  return <RegisterAdmCard />;
+  return (
+    <SessionProvider>
+      <RegisterAdmCard />
+    </SessionProvider>
+  )
 };
 
 export default ResisterAdmPage;

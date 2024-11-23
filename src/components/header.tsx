@@ -30,12 +30,12 @@ export const Header = () => {
           </ul>
         </div>
         <div className="flex items-center gap-6">
-          <Link className="text-sm" href="/login-adm">
-            Login
-          </Link>
-          <Button className="text-white" asChild>
-            <Link href="/cadastro-adm">Cadastre-se</Link>
-          </Button>
+          <button className="bg-primary-100 p-2 px-4 rounded-sm">
+            <Link className="text-sm text-white" href="/login-adm">
+              Login
+            </Link>
+          </button>
+
           <button
             onClick={toggleMenu}
             className="lg:hidden text-gray-700 focus:outline-none"

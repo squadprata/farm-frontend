@@ -1,6 +1,6 @@
 "use client";
 
-import { CenterFocusIcon } from "hugeicons-react";
+import { useSession } from "next-auth/react";
 import { RegisterAdmData } from "./fields";
 import {
   Card,
@@ -10,7 +10,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+
 export const RegisterAdmCard = () => {
+  const {data: session} = useSession()
+
+  if (!session) {
+    return "Você não está autorizado adicionar um admin"
+  }
+  
   return (
     <div className="flex justify-center items-center p-4">
       <Card className="w-full max-w-[832px] lg:w-[832px] md:w-[750px]">
