@@ -1,10 +1,20 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
 const AdminPage = () => {
   const { data: session, status } = useSession();
+
+  const logout = async () => {
+    try {
+      await signOut({
+        callbackUrl: "/", // Redirecionar para uma página após o logout
+      });
+    } catch (error) {
+      console.error("Erro ao fazer logout:", error);
+    }
+  };
 
   if (session) {
     return(
@@ -33,7 +43,7 @@ const AdminPage = () => {
         </Link>
 
         <Link className="w-full ml-2" href="/">
-          <Button>
+          <Button onClick={logout}>
             Terminar sessão
           </Button>
         </Link>
