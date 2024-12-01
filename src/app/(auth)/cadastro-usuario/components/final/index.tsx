@@ -33,7 +33,7 @@ export const Final:React.FC<FinalProps> = ({onNewRegister}) => {
                     >
                         Novo cadastro
                     </Button>
-                    <Link className="w-full" href="/">
+                    <Link className="w-full" href="/admin">
                         <Button className="w-full">
                             Página inicial
                         </Button>

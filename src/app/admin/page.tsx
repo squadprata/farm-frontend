@@ -9,7 +9,7 @@ const AdminPage = () => {
   const logout = async () => {
     try {
       await signOut({
-        callbackUrl: "/", // Redirecionar para uma página após o logout
+        callbackUrl: "/",
       });
     } catch (error) {
       console.error("Erro ao fazer logout:", error);
@@ -26,19 +26,13 @@ const AdminPage = () => {
 
         <Link className="w-full ml-2" href="/usuarios">
           <Button>
-            Colaboradores
+            Usuários
           </Button>
         </Link>
 
-        <Link className="w-full ml-2" href="/cadastro-adm">
+        <Link className="w-full ml-2" href="/cadastro-usuario">
           <Button>
-            Cadastro admin
-          </Button>
-        </Link>
-
-        <Link className="w-full ml-2" href="/cadastro-colaborador">
-          <Button>
-            Cadastro do colaborador
+            Cadastro de usuário
           </Button>
         </Link>
 

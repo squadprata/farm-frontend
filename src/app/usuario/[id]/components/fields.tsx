@@ -34,7 +34,7 @@ const FormProfile = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     setLoading(true)
     axios
-      .get(`${baseURL}user/${id}`, {
+      .get(`${baseURL}/user/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`

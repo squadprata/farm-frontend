@@ -25,34 +25,36 @@ export const EmployeeRegistration = () => {
   };
 
   const handleSubmit = async (data: any) => {
-    const finalData = { ...formData, ...data }
-    
+    const finalData = { ...formData, ...data };
+  
     try {
       const response = await postData({
-        endpoint: "/cadastro",
+        endpoint: "/register",
         body: {
-          name: finalData.username,
+          name: finalData.username, 
           cpf: finalData.cpf,
           crf: finalData.crf,
           email: finalData.email,
+          password: finalData.password,
           cargo: finalData.role,
           role: finalData.permissionType,
         },
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
       });
-
+  
       if (response.status === 201) setStep(step + 1);
     } catch (error: any) {
       Swal.fire({
         icon: "error",
-        title: error?.response?.data?.error || "Erro",
+        title: error?.response?.data?.message || error.message || "Erro inesperado",
         timerProgressBar: true,
         timer: 6000,
       });
     }
-  };
+  }
+  
 
   const handleResetToNewRegister = () => {
     setFormData({});
