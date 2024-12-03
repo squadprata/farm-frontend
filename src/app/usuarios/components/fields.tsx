@@ -17,7 +17,8 @@ interface User {
   id: number,
   name: string,
   cargo: string,
-  ativo: boolean
+  ativo: boolean,
+  cpf: number
 }
 
 const Fields = () => {
@@ -48,12 +49,9 @@ const Fields = () => {
       })
   }, [token])
 
-  const filteredUsers = users.filter(({ name, cargo, ativo }) =>
+  const filteredUsers = users.filter(({ name, cargo, ativo, cpf }) =>
     (showActive ? ativo : !ativo) &&
-    (name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      cargo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      cpf.toLowerCase().includes(searchTerm.toLowerCase()))
-  )
+    (name.toLowerCase().includes(searchTerm.toLowerCase()) || cargo.toLowerCase().includes(searchTerm.toLowerCase()) || cpf.toString().includes(searchTerm.toLowerCase())))
 
   if (!session) {
     return "Você não está autorizado a visualizar está paǵina"
