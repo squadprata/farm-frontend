@@ -31,7 +31,7 @@ export const Header = () => {
         </div>
         <div className="flex items-center gap-6">
           <button className="bg-primary-100 p-2 px-4 rounded-sm">
-            <Link className="text-sm text-white" href="/login-adm">
+            <Link className="text-sm text-white" href="/login">
               Login
             </Link>
           </button>
