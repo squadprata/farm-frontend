@@ -2,15 +2,19 @@
 import { Button } from "@/components/ui/button";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 
 const AdminPage = () => {
   const { data: session, status } = useSession();
-
+  const router = useRouter()
   const logout = async () => {
     try {
       await signOut({
-        callbackUrl: "/",
+        redirect: false,
+        
       });
+      router.push("/");
     } catch (error) {
       console.error("Erro ao fazer logout:", error);
     }
