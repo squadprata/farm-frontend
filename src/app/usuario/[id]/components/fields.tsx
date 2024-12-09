@@ -53,13 +53,13 @@ const FormProfile = ({ params }: { params: { id: string } }) => {
 
   const form = useForm<User>({
     defaultValues: {
-      name: user?.name,
-      password: user?.password,
-      email: user?.email,
-      cargo: user?.cargo,
-      cpf: user?.cpf,
-      crf: user?.crf,
-      ativo: status
+      name: user?.name || "",
+      password: user?.password || "",
+      email: user?.email || "",
+      cargo: user?.cargo || "",
+      cpf: user?.cpf || "",
+      crf: user?.crf || "",
+      ativo: user?.ativo || false,
     },
   })
 
@@ -174,6 +174,7 @@ const FormProfile = ({ params }: { params: { id: string } }) => {
                     </FormLabel>
                     <FormControl>
                       <Input
+                        type="password"
                         className="rounded-6 text-base leading-5 border-neutral-300 "
                         placeholder="Digite sua senha"
                         {...field}

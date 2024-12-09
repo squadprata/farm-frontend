@@ -38,18 +38,18 @@ export const LoginFields = () => {
       const result = await signIn("credentials", {
         email,
         password,
-      });
-      console.log(result);
+      })
+
       if (result?.error) {
-        setError("Senha ou e-mail incorretos. Por favor, tente novamente.");
+        setError("Senha ou e-mail incorretos. Por favor, tente novamente.")
       } else if (result?.ok) {
-        router.push("/admin");
+        router.push("/admin")
       }
     } catch (error) {
-      setError("Ocorreu um erro. Por favor, tente novamente.");
-      console.log(error);
+      setError("Ocorreu um erro. Por favor, tente novamente.")
+      console.log(error)
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false)
     }
   };
 

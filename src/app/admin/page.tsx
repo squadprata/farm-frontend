@@ -16,36 +16,34 @@ const AdminPage = () => {
     }
   };
 
-  if (session) {
-    return(
+  if (status === "loading") {
+    return <p>Carregando...</p>;
+  }
+
+  if (status === "authenticated") {
+    return (
       <>
-        <p>Seja bem vindo, {session.user?.email}!</p>
+        <p>Seja bem-vindo, {session.user?.email}!</p>
         <Link className="w-full" href="/nova-senha">
           <Button>Nova Senha</Button>
         </Link>
 
         <Link className="w-full ml-2" href="/usuarios">
-          <Button>
-            Usuários
-          </Button>
+          <Button>Usuários</Button>
         </Link>
 
         <Link className="w-full ml-2" href="/cadastro-usuario">
-          <Button>
-            Cadastro de usuário
-          </Button>
+          <Button>Cadastro de usuário</Button>
         </Link>
 
         <Link className="w-full ml-2" href="/">
-          <Button onClick={logout}>
-            Terminar sessão
-          </Button>
+          <Button onClick={logout}>Terminar sessão</Button>
         </Link>
       </>
-    ) 
+    );
   }
 
-  return <p>You are not authorized to view this page!</p>;
+  return <p>Você não está autorizado a visualizar esta página!</p>;
 };
 
 export default AdminPage;

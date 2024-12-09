@@ -22,39 +22,51 @@ interface User {
 }
 
 const Fields = () => {
-  const { data: session } = useSession()
-  const form = useForm()
-  const [users, setUsers] = useState<User[]>([])
-  const [loading, setLoading] = useState(true)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [showActive, setShowActive] = useState(true)
-  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL
-  const token = session?.user?.token
+  const { data: session, status } = useSession(); // Obtemos o status e a sessão
+  const form = useForm();
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showActive, setShowActive] = useState(true);
+  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const token = session?.user?.token;
 
   useEffect(() => {
-    axios
-      .get(`${baseURL}/users`, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
-      })
-      .then((response) => {
-        setUsers(response.data)
-        setLoading(false)
-      })
-      .catch((err) => {
-        console.error("Erro ao fazer requisição:", err.response ? err.response.data : err.message)
-        setLoading(false);
-      })
-  }, [token])
+    if (status === "authenticated" && token) {
+      axios
+        .get(`${baseURL}/users`, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          setUsers(response.data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error(
+            "Erro ao fazer requisição:",
+            err.response ? err.response.data : err.message
+          );
+          setLoading(false);
+        });
+    }
+  }, [status, token]);
 
   const filteredUsers = users.filter(({ name, cargo, ativo, cpf }) =>
     (showActive ? ativo : !ativo) &&
-    (name.toLowerCase().includes(searchTerm.toLowerCase()) || cargo.toLowerCase().includes(searchTerm.toLowerCase()) || cpf.toString().includes(searchTerm.toLowerCase())))
+    (name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+     cargo.toLowerCase().includes(searchTerm.toLowerCase()) || 
+     cpf.toString().includes(searchTerm.toLowerCase()))
+  );
 
-  if (!session) {
-    return "Você não está autorizado a visualizar está paǵina"
+  if (status === "loading") {
+    return <p>Carregando...</p>;
+  }
+
+  if (status !== "authenticated") {
+    return <p>Você não está autorizado a visualizar esta página.</p>;
   }
 
   return (
@@ -91,9 +103,11 @@ const Fields = () => {
                 </FormControl>
               </div>
               <div>
-                <Switch checked={showActive}
+                <Switch
+                  checked={showActive}
                   onCheckedChange={setShowActive}
-                  className="bg-gray-200 checked:bg-green-400 relative inline-flex h-6 w-11 items-center rounded-full" />
+                  className="bg-gray-200 checked:bg-green-400 relative inline-flex h-6 w-11 items-center rounded-full"
+                />
                 <p>{showActive ? "Ativos" : "Inativos"}</p>
               </div>
             </div>
@@ -114,14 +128,17 @@ const Fields = () => {
                       <p>{cargo}</p>
                     </div>
                   </div>
-                  {ativo ? <div className="">
-                    <div className="w-6 h-6 bg-green-400 rounded-full"></div>
-                    <p>Ativo</p>
-                  </div> : <div className="">
-                    <div className="w-6 h-6 bg-gray-400 rounded-full"></div>
-                    <p>Inativo</p>
-                  </div>}
-
+                  {ativo ? (
+                    <div>
+                      <div className="w-6 h-6 bg-green-400 rounded-full"></div>
+                      <p>Ativo</p>
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="w-6 h-6 bg-gray-400 rounded-full"></div>
+                      <p>Inativo</p>
+                    </div>
+                  )}
                 </div>
               ))
             ) : (
@@ -131,7 +148,7 @@ const Fields = () => {
         </CardContent>
       </Card>
     </div>
-  )
-}
+  );
+};
 
-export default Fields
+export default Fields;
