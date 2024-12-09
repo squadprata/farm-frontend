@@ -19,7 +19,7 @@ const AdminPage = () => {
       console.error("Erro ao fazer logout:", error);
     }
   };
-
+ 
   if (status === "loading") {
     return <p>Carregando...</p>;
   }
